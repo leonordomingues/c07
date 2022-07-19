@@ -32,8 +32,8 @@ int	ft_str_total(int size, char **str, char *sep)
 	total = 0;
 	while (a < size)
 	{
-		total += ft_strlen(str[total]);
-		total++;
+		total += ft_strlen(str[a]);
+		a++;
 	}
 	total += (ft_strlen(sep)) * (size - 1);
 	return (total);
@@ -56,7 +56,7 @@ char *ft_strcpy(char *dest, int size, char **strs, char *sep)
 			dest[b++] = strs[a][c++];
 		if (a < size - 1)
 		{
-			while (d < ft_strlen(&sep[d]))
+			while (d < ft_strlen(sep))
 				dest[b++] = sep[d++];
 		}
 		a++;
@@ -76,31 +76,12 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (ft_strcpy(c, size, strs, sep));
 }
 
-#include <stdlib.h>
-#include <stdio.h>
-
-char	*ft_strjoin(int size, char **strs, char *sep);
-
-int		main(void)
+int main()
 {
-	int		offset;
-	char	**strs;
-	char	*res_str;
-
-	strs = malloc(3 * sizeof(char *));
-	if (strs == NULL)
-		return (1);
-	offset = 0;
-	while (offset < 3)
-	{
-		strs[offset] = "abc";
-		offset++;
-	}
-	res_str = ft_strjoin(3, strs, ", ");
-	if (res_str == NULL)
-		return (1);
-	printf("res: %s\n", res_str);
-	free(strs);
-	free(res_str);
-	return (0);
+	int s = 4;
+	char *st[] = {"epa ya", "se calhar",
+	  	"mais ou menos", "tipo 6"};
+	char *sep = ", ";
+	printf("%s", ft_strjoin(s, st, sep));
+	return 0;
 }
